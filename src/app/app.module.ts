@@ -1,26 +1,29 @@
+// src/app/app.module.ts
 import { NgModule } from '@angular/core';
-import { BrowserModule, provideClientHydration } from '@angular/platform-browser';
-
-import { AppRoutingModule } from './app-routing.module';
+import { BrowserModule } from '@angular/platform-browser';
+import { ReactiveFormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
-import { InvoiceListComponent } from './components/invoice-list/invoice-list.component';
-import { CreateInvoiceComponent } from './components/create-invoice/create-invoice.component';
 import { UpdateInvoiceComponent } from './components/update-invoice/update-invoice.component';
+import { CreateInvoiceComponent } from './components/create-invoice/create-invoice.component';
+import { InvoiceListComponent } from './components/invoice-list/invoice-list.component';
+import { AppRoutingModule } from './app-routing.module';
+import {  HttpClientModule } from '@angular/common/http';
+
 
 @NgModule({
   declarations: [
     AppComponent,
-    InvoiceListComponent,
-    CreateInvoiceComponent,
     UpdateInvoiceComponent,
+    CreateInvoiceComponent,
+    InvoiceListComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ReactiveFormsModule,
+    HttpClientModule
   ],
-  providers: [
-    provideClientHydration()
-  ],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
