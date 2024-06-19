@@ -12,6 +12,8 @@ export class InvoiceListComponent implements OnInit {
   invoices: any[] = [];
   currentPage: number = 1;
   pages: number[] = [];
+  invoicesPerPage = 7; // Number of invoices per page
+
   searchTerm = new FormControl();
   
   constructor(private invoiceService: InvoicesService, private router: Router) { }
@@ -27,6 +29,9 @@ export class InvoiceListComponent implements OnInit {
       this.invoices = data;
       this.currentPage = 1;
     });
+
+    this.getInvoices()
+
   }
 
   getInvoices(): void {
@@ -37,7 +42,7 @@ export class InvoiceListComponent implements OnInit {
   }
 
   setPages(): void {
-    const totalPages = Math.ceil(this.invoices.length / 10);
+    const totalPages = Math.ceil(this.invoices.length / this.invoicesPerPage);
     this.pages = Array.from({ length: totalPages }, (_, i) => i + 1);
   }
 
